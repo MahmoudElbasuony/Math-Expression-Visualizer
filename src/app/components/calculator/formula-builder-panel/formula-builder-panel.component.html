@@ -1,0 +1,13 @@
+<div class="card text-dark bg-light mb-3">
+  <div class="card-header">
+    Formula Builder
+    <app-add-expression-menu (onMathItemChoose)="handleMathItemChoose($event)" (onFormulaReset)="handleFormulaReset()">
+    </app-add-expression-menu>
+  </div>
+  <div class="card-body expression-entiries">
+
+    <app-expression-entry [deletable]="false" (onExpressionChanged)="onFormulaChangeHandler($event)" (onExpressionRemove)="onFormulaChangeHandler()" (onExpressionRemove)="handleExpressionRemove($event)" (onExpressionFocused)="handleOnFocus($event)" [initialExpression]="rootExpression">
+    </app-expression-entry>
+    <!-- <textarea class="form-control" [(ngModel)]="formula" (input)="onFormulaChangeHandler()"></textarea> -->
+  </div>
+</div>

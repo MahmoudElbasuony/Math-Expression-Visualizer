@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col">
+    <app-formula-builder-panel [rootExpression]="rootExpression" (onFormulaReset)="cleanUp()"
+      (onFormulaChange)='onFormulaChange()'></app-formula-builder-panel>
+    <pre class="text-danger">{{error}}</pre>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <app-formula-visualizer (onExpressionNodeRemove)="handleExpressionNodeRemove($event)"
+          [rootExpression]="rootExpression"></app-formula-visualizer>
+      </div>
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <app-variable-list [parameterList]="parameterList" (onParameterListChange)="onParameterListChange($event)">
+        </app-variable-list>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <app-formula-text-display [expressionStr]="(rootExpression || '').toString()"></app-formula-text-display>
+      </div>
+    </div>
+  </div>
+</div>

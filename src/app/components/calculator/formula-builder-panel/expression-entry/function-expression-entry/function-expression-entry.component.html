@@ -1,0 +1,15 @@
+<li (click)="fireFocusEvent(expression)" [ngClass]="{'active':  expression.isActive}" class="list-group-item">
+  <select ref-func_name class="form-control form-control-sm operation-control" (click)="$event.stopPropagation()"  (change)="onFunctionNameChange($event.target.value)">
+    <option value="">Select Function</option>
+    <ng-container *ngFor="let func of chooseList">
+      <option [value]="func">{{func}}</option>
+    </ng-container>
+  </select>
+</li>
+<li class="list-group-item">
+  <b>Add Argument <i class="fa fa-plus-circle text-success"></i></b>
+</li>
+<li class="list-group-item" *ngIf="expression.arguments.length;">
+  <app-expression-entry *ngFor="let exp of expression.arguments" [initialExpression]="exp"
+    (onExpressionFocused)="fireFocusEvent(exp)"  (onExpressionChanged)="handleExpressionChange(exp)" (onExpressionRemove)="deleteExpression(exp)"></app-expression-entry>
+</li>

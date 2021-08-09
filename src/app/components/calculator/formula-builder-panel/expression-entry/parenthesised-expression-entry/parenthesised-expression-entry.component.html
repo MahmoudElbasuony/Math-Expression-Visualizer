@@ -1,0 +1,23 @@
+<li (click)="fireFocusEvent(expression, $event); $event.stopPropagation()"
+  class="list-group-item flex-row flex-nowrap d-inline-flex align-items-center"
+  [ngClass]="{'active':  expression.isActive}">
+  <div>
+    <b>(</b>
+  </div>
+  <div>
+    <ng-container *ngIf="!!expression.expression; else enterParenThesisedExpression">
+      <app-expression-entry [initialExpression]='expression.expression'
+        (onExpressionFocused)="fireFocusEvent($event);" (onExpressionChanged)="handleExpressionChange($event)" (onExpressionRemove)="deleteExpression($event)">
+      </app-expression-entry>
+    </ng-container>
+    <ng-template #enterParenThesisedExpression>
+      <div [ngClass]="{'hasToBeEnteredExpression' : !expression.expression}"
+        class="list-group expression-part bg-light text-dark p-2">
+        Choose Exepression <i class="fa fa-plus-square  text-primary"></i>
+      </div>
+    </ng-template>
+  </div>
+  <div>
+    <b>)</b>
+  </div>
+</li>

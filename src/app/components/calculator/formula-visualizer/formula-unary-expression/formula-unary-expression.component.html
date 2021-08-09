@@ -1,0 +1,9 @@
+<app-formula-expression-node (onRemoveNodeExpression)="onRemoveExpressionNode($event)" [expression]="expression" nodeTitle="Unary Expression">
+    <li class="list-group-item formula-node formula-operation">
+      <b>{{operation}}</b>
+    </li>
+    <li class="list-group-item formula-node">
+      <app-formula-visualizer-recusive-renderer (onNodeExpressionRemove)="onRemoveExpressionNode($event)" *ngIf="expression.expression" [expression]="expression.expression">
+      </app-formula-visualizer-recusive-renderer>
+    </li>
+</app-formula-expression-node>

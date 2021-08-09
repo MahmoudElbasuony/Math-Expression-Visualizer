@@ -1,0 +1,5 @@
+<li (click)="fireFocusEvent(expression)" [ngClass]="{'active':  expression.isActive}"
+class="list-group-item cursor-pointer">Enter Parameter Name</li>
+<li class="list-group-item">
+<b>$</b><input type="text" (change)="onParameterNameChange($event.target.value)" ref-parameterExp class="form-control form-control-sm operation-control" />
+</li>

@@ -1,0 +1,46 @@
+<div class="list-group">
+  <div class="dropdown-item list-group-item  list-group-item-success">
+    <a href="#" class="nav-link" data-bs-toggle="collapse" href="#math_expression" role="button" aria-expanded="false"
+      aria-controls="math_expression">Math</a>
+  </div>
+  <div class="collapse show" id="math_expression">
+    <ul class="list-group">
+
+      <li class="list-group-item cursor-pointer" (click)="chooseMathItem(MathItemType.PI)">
+        PI <i title="Add PI"  class="pull-right  text-danger mt-1 fa fa-plus-circle"></i>
+      </li>
+
+      <li class="list-group-item cursor-pointer" (click)="chooseMathItem(MathItemType.E)">
+        Epsilon <i title="Add Epsilon"  class="pull-right text-danger mt-1 fa fa-plus-circle"></i>
+      </li>
+
+      <li class="list-group-item cursor-pointer" (click)="chooseMathItem(MathItemType.NUMBER)">
+        Number <i title="Add Number"  class="pull-right text-danger mt-1 fa fa-plus-circle"></i>
+      </li>
+
+      <li class="list-group-item cursor-pointer" (click)="chooseMathItem(MathItemType.FUNCTION)">
+        Function <i title="Add Function"  class="pull-right text-danger mt-1 fa fa-plus-circle"></i>
+      </li>
+
+      <li class="list-group-item cursor-pointer" (click)="chooseMathItem(MathItemType.UNARY_EXPR)">
+        Unary Expression <i title="Add Unary Expression"  class="pull-right text-danger mt-1 fa fa-plus-circle"></i>
+      </li>
+
+      <li class="list-group-item cursor-pointer" (click)="chooseMathItem(MathItemType.BINARY_EXPR)">
+        Binary Expression <i title="Add Binary Expression"  class="pull-right text-danger mt-1 fa fa-plus-circle"></i>
+      </li>
+
+      <li class="list-group-item cursor-pointer" (click)="chooseMathItem(MathItemType.PARAMETER)">
+        Parameter <i title="Add Parameter"  class="pull-right text-danger mt-1 fa fa-plus-circle"></i>
+      </li>
+
+      <li class="list-group-item cursor-pointer" (click)="chooseMathItem(MathItemType.POWER)">
+        Power Expression <i title="Add Power Expression"  class="pull-right text-danger mt-1 fa fa-plus-circle"></i>
+      </li>
+      <li class="list-group-item cursor-pointer" (click)="chooseMathItem(MathItemType.PARENTHESIS_EXP)">
+        Parenthesised Expression <i title="Add Function"  class="pull-right text-danger mt-1 fa fa-plus-circle"></i>
+      </li>
+
+    </ul>
+  </div>
+</div>

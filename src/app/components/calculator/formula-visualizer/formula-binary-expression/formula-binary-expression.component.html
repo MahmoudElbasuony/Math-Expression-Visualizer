@@ -1,0 +1,17 @@
+<app-formula-expression-node (onRemoveNodeExpression)="onRemoveExpressionNode($event)" [expression]="expression" nodeTitle="Binary Expression">
+  <li class="list-group-item formula-node">
+    <app-formula-visualizer-recusive-renderer (onNodeExpressionRemove)="onRemoveExpressionNode($event)" *ngIf="expression.left" [expression]="expression.left">
+    </app-formula-visualizer-recusive-renderer>
+  </li>
+  <li class="list-group-item formula-node">
+    <ul class="list-group">
+      <li class="list-group-item formula-node formula-operation">
+        <b>{{operation}}</b>
+      </li>
+    </ul>
+  </li>
+  <li class="list-group-item formula-node">
+    <app-formula-visualizer-recusive-renderer (onNodeExpressionRemove)="onRemoveExpressionNode($event)" *ngIf="expression.right" [expression]="expression.right">
+    </app-formula-visualizer-recusive-renderer>
+  </li>
+</app-formula-expression-node>

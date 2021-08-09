@@ -1,0 +1,18 @@
+<div class="btn-group pull-right" role="group" aria-label="Add & Reset Operations">
+
+
+  <div class="btn-group dropstart" role="group">
+    <button id="add_operation_btn" type="button" class="btn btn-primary  dropdown-toggle" data-bs-toggle="dropdown"
+      aria-expanded="false">
+      <i class="fa fa-plus-square"></i> Add
+    </button>
+
+    <div class="dropdown-menu p-0 expressions-list" aria-labelledby="add_operation_btn" (click)="$event.stopPropagation()">
+        <app-math-expressions (onMathItemChoose)="handleMathItmeChoose($event)"></app-math-expressions>
+    </div>
+  </div>
+
+  <button type="button" (click)="handleFormulaReset()" class="btn btn-danger">
+    <i class="fa fa-recycle"></i> Reset
+  </button>
+</div>

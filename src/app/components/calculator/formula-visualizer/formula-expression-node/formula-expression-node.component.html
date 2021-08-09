@@ -1,0 +1,13 @@
+<ul class="list-group">
+  <li class="list-group-item formula-node" (mouseenter)="onHoverNode($event)" (mouseleave)="onLeaveNode($event)">
+    <a class="nav-link node-title" role="button" aria-expanded="false" attr.aria-controls="{{nodeId}}">
+      <i class="fa" (click)="collapsed=!collapsed"
+        [ngClass]="{'fa-minus-square' : !collapsed , 'fa-plus-square' : collapsed}"></i>
+      {{nodeTitle}}
+      <i class="fa fa-close text-danger node-delete-btn" *ngIf="isNodeHovered" (click)="removeExpressionNode()"></i>
+    </a>
+  </li>
+  <ul class="list-group" *ngIf="!collapsed" [id]="nodeId">
+    <ng-content></ng-content>
+  </ul>
+</ul>

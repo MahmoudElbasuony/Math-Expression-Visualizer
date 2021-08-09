@@ -1,0 +1,14 @@
+<app-formula-expression-node (onRemoveNodeExpression)="onRemoveExpressionNode($event)" [expression]="expression"  nodeTitle="Parentthesised Expression">
+
+    <li class="list-group-item formula-node fixed-formula-constant">
+      <b class="text-secondary">(</b>
+    </li>
+    <li class="list-group-item formula-node">
+      <app-formula-visualizer-recusive-renderer (onNodeExpressionRemove)="onRemoveExpressionNode($event)" *ngIf="expression.expression" [expression]="expression.expression">
+      </app-formula-visualizer-recusive-renderer>
+    </li>
+    <li class="list-group-item formula-node fixed-formula-constant">
+      <b class="text-secondary">)</b>
+    </li>
+
+</app-formula-expression-node>

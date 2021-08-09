@@ -1,0 +1,5 @@
+.visualizer-body {
+  max-height: 20em;
+  min-height: 20em;
+  overflow: auto;
+}

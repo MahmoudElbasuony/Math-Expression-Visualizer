@@ -1,0 +1,13 @@
+<li class="list-group-item" (mouseleave)="onBlurParameter()" (mouseenter)="onHoverParameter()" [ngClass]="{'bg-danger' : isInvalid, 'active' : hasFocus }" >
+  <div class="row">
+    <div class="mt-1 col-xs-12 col-md-4 col-sm-6">
+      <input class="form-control" type="text" name='key' [(ngModel)]="parameter[0]" />
+    </div>
+    <div class="mt-1 col-xs-12 col-md-4 col-sm-6">
+      <input class="form-control" type="text" name='value' [(ngModel)]="parameter[1]" />
+    </div>
+    <div class="mt-1 col-xs-12 col-sm-12 col-md-4">
+      <button title="Remove" class="col-12 btn" [ngClass]="{'btn-danger' : !isInvalid && !hasFocus, 'btn-secondary' :  isInvalid || hasFocus }" (click)="removeEntry()"><i class="fa fa-close"></i></button>
+    </div>
+  </div>
+</li>

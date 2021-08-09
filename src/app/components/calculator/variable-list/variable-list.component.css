@@ -1,0 +1,5 @@
+.parameter-list-body{
+  min-height: 20em;
+  max-height: 20em;
+  overflow: auto;
+}

@@ -1,0 +1,38 @@
+<li [ngClass]="{'active':  expression.isActive}" class="list-group-item text-center d-inline-flex align-items-center"
+(click)="fireFocusEvent(expression, $event)">
+  <!-- Base expression -->
+  <div class="list-group-item list-group-item-action"
+    [ngClass]="{'hasToBeEnteredExpression' : !expression?.expression, 'active':  expression.expression?.isActive}">
+
+    <ng-container *ngIf="expression?.expression; else enterPowerBaseExpression">
+
+      <app-expression-entry [initialExpression]='expression.expression' (onExpressionChanged)="handleExpressionChange($event)" (onExpressionFocused)="fireFocusEvent($event);"
+        (onExpressionRemove)="deleteExpression($event)">
+      </app-expression-entry>
+
+    </ng-container>
+    <ng-template #enterPowerBaseExpression>
+      <div class="list-group expression-part" (click)="fireFocusEvent(expression,$event)">
+        base <i class="fa fa-plus-square text-primary"></i>
+      </div>
+    </ng-template>
+
+  </div>
+  <b class="m-1">^</b>
+  <div class="list-group-item list-group-item-action"
+    [ngClass]="{'hasToBeEnteredExpression' : !expression?.power && !!expression.expression , 'active':  expression.power?.isActive}">
+    <!-- Power Expression -->
+    <ng-container *ngIf="expression?.power; else enterPowerExpression">
+
+      <app-expression-entry [initialExpression]='expression.power' (onExpressionChanged)="handleExpressionChange($event)" (onExpressionRemove)="deleteExpression($event)"
+        (onExpressionFocused)="fireFocusEvent($event);">
+      </app-expression-entry>
+
+    </ng-container>
+    <ng-template #enterPowerExpression>
+      <div (click)="fireFocusEvent(expression,$event)" class="list-group expression-part">
+        Power <i class="fa fa-plus-square  text-primary"></i>
+      </div>
+    </ng-template>
+  </div>
+</li>

@@ -1,0 +1,32 @@
+<div class="card text-dark bg-light mb-3">
+  <div class="card-header">Parameter List</div>
+  <div class="card-body parameter-list-body">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col text-center">
+            <b>Name</b>
+          </div>
+          <div class="col  text-center">
+            <b>Value</b>
+          </div>
+        </div>
+      </li>
+      <ng-container *ngIf="parameterList.length; else noParamtersText">
+        <app-variable-entry  *ngFor="let entry of parameterList"
+                              [hasFocus]="entry === newParameter"
+                              [parameter]="entry"
+                              (onParameterRemove)="removeParameter($event)">
+        </app-variable-entry>
+      </ng-container>
+      <ng-template #noParamtersText>
+        <p class="text-primary text-center fw-bold mt-3">No Parameters</p>
+      </ng-template>
+
+      <li class="list-group-item">
+          <button class="btn btn-success pull-right" (click)="addParameter()"><i class="fa fa-plus"></i> Add</button>
+      </li>
+    </ul>
+  </div>
+
+</div>

@@ -1,0 +1,9 @@
+<div class="card text-dark bg-light mb-3">
+  <div class="card-header">Formula Visualization</div>
+  <div class="card-body visualizer-body">
+    <div>
+      <app-formula-visualizer-recusive-renderer (onNodeExpressionRemove)="onRemoveExpressionNode($event)"
+        *ngIf="rootExpression" [expression]="rootExpression"></app-formula-visualizer-recusive-renderer>
+    </div>
+  </div>
+</div>

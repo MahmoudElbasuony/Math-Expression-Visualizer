@@ -1,0 +1,12 @@
+<app-formula-expression-node (onRemoveNodeExpression)="onRemoveExpressionNode($event)" [expression]="expression"  nodeTitle="Power Expression">
+
+    <li class="list-group-item formula-node">
+      <app-formula-visualizer-recusive-renderer (onNodeExpressionRemove)="onRemoveExpressionNode($event)" *ngIf="expression.expression" [expression]="expression.expression">
+      </app-formula-visualizer-recusive-renderer>
+    </li>
+    <li class="list-group-item formula-node formula-operation"> ^ </li>
+    <li class="list-group-item formula-node">
+      <app-formula-visualizer-recusive-renderer (onNodeExpressionRemove)="onRemoveExpressionNode($event)" *ngIf="expression.power" [expression]="expression.power">
+      </app-formula-visualizer-recusive-renderer>
+    </li>
+</app-formula-expression-node>

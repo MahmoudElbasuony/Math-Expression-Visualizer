@@ -1,0 +1,41 @@
+<li [ngClass]="{'active':  expression?.isActive}" class="list-group-item text-center d-inline-flex align-items-center"
+  (click)="fireFocusEvent(expression, $event)">
+  <!-- Left expression -->
+  <div class="list-group-item list-group-item-action"
+    [ngClass]="{'hasToBeEnteredExpression' : !expression?.left, 'active':  expression.left?.isActive}">
+    <ng-container *ngIf="!!expression?.left; else enterLeftExpression">
+
+      <app-expression-entry (onExpressionFocused)="fireFocusEvent($event);" (onExpressionChanged)="handleExpressionChange($event)" (onExpressionRemove)="deleteExpression($event)" [initialExpression]='expression.left'>
+      </app-expression-entry>
+
+    </ng-container>
+    <ng-template #enterLeftExpression>
+      <div class="list-group expression-part">
+        Left <i class="fa fa-plus-square text-primary"></i>
+      </div>
+    </ng-template>
+  </div>
+  <div  class="list-group-item list-group-item-action m-2">
+    <select (click)="$event.stopPropagation()" class="form-control form-control-sm operation-control" (change)="onBinaryOperationChange($event.target.value)">
+      <option [value]="BinaryExpressionOperationType[BinaryExpressionOperationType.UNKNOWN]">Operation</option>
+      <ng-container *ngFor="let op of chooseList">
+        <option [value]="op">{{op}}</option>
+      </ng-container>
+    </select>
+  </div>
+  <!-- Right Expression -->
+  <div class="list-group-item list-group-item-action"
+    [ngClass]="{'hasToBeEnteredExpression' : !expression?.right, 'active':  expression.right?.isActive}">
+    <ng-container *ngIf="!!expression?.right; else enterRightExpression">
+
+      <app-expression-entry [initialExpression]='expression.right' (onExpressionChanged)="handleExpressionChange($event)" (onExpressionRemove)="deleteExpression($event)" (onExpressionFocused)="fireFocusEvent($event);">
+      </app-expression-entry>
+
+    </ng-container>
+    <ng-template #enterRightExpression>
+      <div class="list-group expression-part">
+        Right <i class="fa fa-plus-square  text-primary"></i>
+      </div>
+    </ng-template>
+  </div>
+</li>

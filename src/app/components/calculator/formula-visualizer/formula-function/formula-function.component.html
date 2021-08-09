@@ -1,0 +1,25 @@
+<app-formula-expression-node (onRemoveNodeExpression)="onRemoveExpressionNode($event)" [expression]="expression"  nodeTitle="Function Expression">
+
+  <li class="list-group-item formula-node fixed-formula-constant">
+    <b class="text-danger">{{expression.name}}</b>
+  </li>
+  &nbsp;
+  <li class="list-group-item formula-node fixed-formula-constant">
+    <b>(</b>
+  </li>
+  &nbsp;
+  <ng-container *ngFor="let argExp of expression.arguments">
+    <ul class="list-group">
+      <li class="list-group-item formula-node fixed-formula-constant">Argument</li>
+      <li class="list-group-item formula-node">
+        <app-formula-visualizer-recusive-renderer (onNodeExpressionRemove)="onRemoveExpressionNode($event)" [expression]="argExp"></app-formula-visualizer-recusive-renderer>
+      </li>
+    </ul>
+  </ng-container>
+  &nbsp;
+  <li class="list-group-item formula-node fixed-formula-constant">
+    <b>)</b>
+  </li>
+  &nbsp;
+
+</app-formula-expression-node>

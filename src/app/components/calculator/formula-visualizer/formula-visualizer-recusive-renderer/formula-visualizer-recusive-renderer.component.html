@@ -1,0 +1,73 @@
+<ul class="list-group">
+  <ng-container *ngIf="expression; else noTree">
+
+
+    <ng-container [ngSwitch]="+expression.type">
+      <ng-container *ngSwitchCase="ExpressionTypes.BINARY_EXPR">
+        <app-formula-binary-expression (onRemoveNodeExpression)="onRemoveExpressionNode($event)"
+          [expression]="expression"></app-formula-binary-expression>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionTypes.UNARY_EXPR">
+        <app-formula-unary-expression (onRemoveNodeExpression)="onRemoveExpressionNode($event)"
+          [expression]="expression">
+        </app-formula-unary-expression>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionTypes.PARENTHESIS_EXP">
+        <app-formula-parenthesised-expression *ngIf="expressionAsParenthesised.expression; else noTree;"
+          (onRemoveNodeExpression)="onRemoveExpressionNode($event)" [expression]="expression">
+        </app-formula-parenthesised-expression>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionTypes.FUNCTION">
+        <app-formula-function (onRemoveNodeExpression)="onRemoveExpressionNode($event)" [expression]="expression">
+        </app-formula-function>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionTypes.POWER">
+        <app-formula-power [expression]="expression"></app-formula-power>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionTypes.NUMBER">
+        <app-formula-expression-node nodeTitle="Number Expression"
+          (onRemoveNodeExpression)="onRemoveExpressionNode($event)">
+          <li class="list-group-item formula-node fixed-formula-constant">
+            <b class="text-primary">{{expression.value()}}</b>
+          </li>
+        </app-formula-expression-node>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionTypes.STRING">
+        <app-formula-expression-node nodeTitle="String Expression"
+          (onRemoveNodeExpression)="onRemoveExpressionNode($event)">
+          <li class="list-group-item formula-node fixed-formula-constant">
+            <b class="text-primary">{{expression.value()}}</b>
+          </li>
+        </app-formula-expression-node>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionTypes.PI">
+        <app-formula-expression-node nodeTitle="PI Expression"
+          (onRemoveNodeExpression)="onRemoveExpressionNode($event)">
+          <li class="list-group-item formula-node fixed-formula-constant">
+            <b class="text-primary">{{expression.value()}}</b>
+          </li>
+        </app-formula-expression-node>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionTypes.E">
+        <app-formula-expression-node nodeTitle="Epsilon Expression"
+          (onRemoveNodeExpression)="onRemoveExpressionNode($event)">
+          <li class="list-group-item formula-node fixed-formula-constant">
+            <b class="text-primary">{{expression.value()}}</b>
+          </li>
+        </app-formula-expression-node>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionTypes.PARAMETER">
+        <app-formula-expression-node nodeTitle="Parameter Expression"
+          (onRemoveNodeExpression)="onRemoveExpressionNode($event)">
+          <li class="list-group-item formula-node fixed-formula-constant">
+            <b class="text-primary">{{expression.value()}}</b>
+          </li>
+        </app-formula-expression-node>
+      </ng-container>
+    </ng-container>
+
+  </ng-container>
+  <ng-template #noTree>
+    <p class="text-center fw-bold">No Tree</p>
+  </ng-template>
+</ul>

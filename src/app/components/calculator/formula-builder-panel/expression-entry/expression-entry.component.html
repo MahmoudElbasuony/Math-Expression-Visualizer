@@ -1,0 +1,59 @@
+  <ul class="list-group list-group-flush expression-entry" (click)="onFocus(initialExpression, $event)">
+    <i class="fa fa-close expression-delete-btn bg-white cursor-pointer text-danger"
+      (click)="onDelete(initialExpression)"></i>
+    <ng-container [ngSwitch]="initialExpression.type">
+
+      <ng-container *ngSwitchCase="ExpressionItemType.E">
+        <app-constant-expression-entry (onExpressionEntryFocus)="onFocus($event)"
+          (onExpressionRemove)="onDelete($event)" (onExpressionChange)="onExpressionChange($event)"
+          [expression]="initialExpression">
+        </app-constant-expression-entry>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionItemType.PI">
+        <app-constant-expression-entry (onExpressionEntryFocus)="onFocus($event)"
+          (onExpressionRemove)="onDelete($event)" (onExpressionChange)="onExpressionChange($event)"
+          [expression]="initialExpression">
+        </app-constant-expression-entry>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionItemType.NUMBER">
+        <app-number-expression-entry (onExpressionRemove)="onDelete($event)" (onExpressionEntryFocus)="onFocus($event)"
+          (onExpressionChange)="onExpressionChange($event)" [expression]="initialExpression">
+        </app-number-expression-entry>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionItemType.PARAMETER">
+        <app-parameter-expression-entry (onExpressionRemove)="onDelete($event)"
+          (onExpressionEntryFocus)="onFocus($event)" (onExpressionChange)="onExpressionChange($event)"
+          [expression]="initialExpression">
+        </app-parameter-expression-entry>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionItemType.FUNCTION">
+        <app-function-expression-entry (onExpressionEntryFocus)="onFocus($event)"
+          (onExpressionRemove)="onDelete($event)" (onExpressionChange)="onExpressionChange($event)"
+          [expression]="initialExpression">
+        </app-function-expression-entry>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionItemType.BINARY_EXPR">
+        <app-binary-expression-entry (onExpressionRemove)="onDelete($event)" (onExpressionEntryFocus)="onFocus($event)"
+          (onExpressionChange)="onExpressionChange($event)" [expression]="initialExpression">
+        </app-binary-expression-entry>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionItemType.POWER">
+        <app-power-expression-entry (onExpressionRemove)="onDelete($event)" (onExpressionEntryFocus)="onFocus($event)"
+          (onExpressionChange)="onExpressionChange($event)" [expression]="initialExpression">
+        </app-power-expression-entry>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionItemType.PARENTHESIS_EXP">
+        <app-parenthesised-expression-entry (onExpressionEntryFocus)="onFocus($event)"
+          (onExpressionRemove)="onDelete($event)" (onExpressionChange)="onExpressionChange($event)"
+          [expression]="initialExpression">
+        </app-parenthesised-expression-entry>
+      </ng-container>
+      <ng-container *ngSwitchCase="ExpressionItemType.UNARY_EXPR">
+        <app-unary-expression-entry (onExpressionRemove)="onDelete($event)" (onExpressionEntryFocus)="onFocus($event)"
+          (onExpressionChange)="onExpressionChange($event)" [expression]="initialExpression">
+        </app-unary-expression-entry>
+      </ng-container>
+      <ng-container *ngSwitchDefault>
+      </ng-container>
+    </ng-container>
+  </ul>
